@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picture-Cropper", "Picture-Cropper.csproj", "{240589FF-0F70-433D-97AA-7DBFBFCD734B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{240589FF-0F70-433D-97AA-7DBFBFCD734B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240589FF-0F70-433D-97AA-7DBFBFCD734B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240589FF-0F70-433D-97AA-7DBFBFCD734B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240589FF-0F70-433D-97AA-7DBFBFCD734B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D30F846A-56F5-4A5B-9BFF-33A0BB9AFE5E}
+	EndGlobalSection
+EndGlobal

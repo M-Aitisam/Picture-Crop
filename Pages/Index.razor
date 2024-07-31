@@ -1,0 +1,54 @@
+﻿@page "/image-uploader"
+@page "/"
+@using Microsoft.AspNetCore.Components.Forms
+@inject IJSRuntime JS
+
+<h3 style="margin-left: 50%;" >Image Uploader </h3>
+<hr>
+
+<InputFile OnChange="HandleSelected" />
+
+@if (imageData != null)
+{
+    <div>
+        <img id="image" src="@imageData" alt="Uploaded Image" style="max-width: 50%;" />
+        <button class=" btn btn-outline-success " style="display:flex; align-items: center ; justify-content:center" @onclick="CropImage">Crop Image</button>
+    </div>
+}
+
+@if (croppedImageData != null)
+{
+    <div style="background-color: black ; margin: 3rem; display:block; align-items:center; justify-content:center">
+        <img src="@croppedImageData" alt="Cropped Image" style="max-width: 100rem;display:block ;margin-left:40%; "/>
+        <a href="@croppedImageData" class=" btn btn-outline-danger " style="display:flex; margin-top:2rem; align-items:center; justify-content:center" download="cropped-image.jpg">Download Cropped Image</a>
+    </div>
+}
+
+@code {
+    private string? imageData;
+    private string? croppedImageData;
+
+    private async Task HandleSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream().ReadAsync(buffer);
+        imageData = $"data:image/jpeg;base64,{Convert.ToBase64String(buffer)}";
+        StateHasChanged();
+        await JS.InvokeVoidAsync("initializeCropper", "#image");
+    }
+
+    private async Task CropImage()
+    {
+        try
+        {
+            var croppedImage = await JS.InvokeAsync<string>("cropImage");
+            croppedImageData = croppedImage;
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error calling JavaScript function: {ex.Message}");
+        }
+    }
+}
